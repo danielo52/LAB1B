@@ -14,9 +14,11 @@ public class DrawPolygons extends Component{
         polygonNames.add("triangle");
         polygonNames.add("rectangle");
 
+
         centerPoints.add(new Point(100,100));
         centerPoints.add(new Point(150,150));
         centerPoints.add(new Point(100,200));
+
     }//constructor
 
     @Override
