@@ -40,7 +40,27 @@ public class CarStack {
         size = s;
     }
 
+    public int getSize() {
+        return size;
+    }
+
     public void setTop(int t) {
         top = t;
     }
+
+    public Transportable getTopCar() {
+        return cars[top];
+    }
+
+    public int nrOfElements() {
+        int counter = 0;
+        for(Transportable t : cars) {
+            counter++;
+        }
+        return counter;
+    }
+
+
+
+
 }

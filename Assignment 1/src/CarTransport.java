@@ -1,6 +1,8 @@
 import com.sun.jdi.connect.Transport;
 
 import java.awt.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class CarTransport implements ITransporters /*, ITruck*/ {
 /*
@@ -21,23 +23,27 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
 
     private Car parent;
     private boolean rampDown;
-    private CarStack transports;
+    private ArrayList<Transportable> transports;
+    private int maxLoad;
+    private int currentLoad;
 
-    public CarTransport(Car parent, boolean rampDown, CarStack transports) {
+    public CarTransport(Car parent, boolean rampDown, ArrayList<Transportable> transports, int maxLoad, int currentLoad) {
         this.parent = parent;
         this.rampDown = rampDown;
         this.transports = transports;
+        this.maxLoad = maxLoad;
+        this.currentLoad = currentLoad;
     }
     //int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, int x, int y, int dir
     public CarTransport() {
         parent = new Car(2, 200, 0, Color.green, "CarTransporter 9000",
                 1,1,1);
         setRampDownTrue();
-        transports = new CarStack();
+        maxLoad = 8;
+        transports = new ArrayList<Transportable>();
+        currentLoad = 0;
+
     }
-
-
-
 
     //WE NEED MORE FIELDS BUT WE START OFF WITH THESE. JUST SO WE CAN IMPLEMENT SOME VERY NECESSARY METHODS
     public Car getParent() {
@@ -67,18 +73,30 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
         return rampDown;
     }
 
+    public ArrayList<Transportable> getTransports() {
+        return transports;
+    }
+
 
     //     ********** LOAD AND UNLOAD **********
 
+
     public void loadCar(Transportable carLoad) {
-        if(isInVicinity(carLoad) && isRampDown()) {
-            transports.push(carLoad);
+        if(isInVicinity(carLoad) && isRampDown() && transports.size() < maxLoad && isIdle()) {
+            transports.add(carLoad);
+            currentLoad++;
+        } else {
+            System.out.println("Please move closer to the Car Transport");
         }
     }
 
-    public void unloadCar(Transportable carLoad) {
-        if(isRampDown()) {
-            transports.pop();
+    public void unloadCar(CarStack stack) {
+        if(isRampDown() && isIdle()) {
+            Transportable t = transports.get(currentLoad);
+            transports.remove(currentLoad);
+            currentLoad--;
+            t.getParent().setY(parent.getY() + 1);
+            t.getParent().setX(parent.getX() + 1);
         }
         /*
         if(c.isElementOf(carTrans.getTransports()) && carTrans.isIdle()) -> unload to "nearby" x/y.
@@ -90,8 +108,24 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
     x/y som CarTransporten har.
      */
 
+
+    public void moveCarTransport() {
+        getParent().move();
+        int xtemp = getParent().getX();
+        int ytemp = getParent().getY();
+        for(int i = 0; i <= transports.size(); i++) {
+            transports.get(i).getParent().setX(xtemp);
+            transports.get(i).getParent().setY(ytemp);
+        }
+
+        //for(int i = 0; i < transports.nrOfElements(); i++) {
+            //nada
+        }
+
+
+/*
     public void move() { //Bit of a temporary solution. It ain't a beauty but hey it's alright.
-        if (()) {
+        if ((isRampDown())) {
             if (parent.getDir() == 0) {
                 parent.setX((int) parent.getCurrentSpeed());
             } else if (getParent().getDir() == 1) {
@@ -106,12 +140,8 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
 
     }
 
-    public void putInVicinity(Transportable t, CarTransport cT) {
-        int xtemp = cT.getParent().getX();
-        int ytemp = cT.getParent().getY();
+ */
 
-        cT.getParent().setX(xtemp);
-    }
 
     public boolean isInVicinity(Transportable c) {
         // c's X should be within CarTrans's x +/- 1. Though X's can be negative which is a bummer
@@ -128,25 +158,29 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
 
 
 
-
-
-
-
-
-
-
-
-
     public static void main(String args[]) {
         CarTransport test = new CarTransport();
         test.setRampDownFalse();
         System.out.println(test.getRampState());
 
+        Volvo240 testV = new Volvo240();
+        Saab95 testS = new Saab95();
+
+        CarTransport testCT = new CarTransport();
+        testV.getParent().setY(12);
+        testS.getParent().setY(12);
+
+        testCT.loadCar(testS);
+        testCT.loadCar(testV);
+
+        System.out.println(testCT.getTransports().size());
+
+        System.out.println("INIT PRINT");
+        System.out.println(testS.getParent().getY() + " SAAB " + testS.getParent().getX());
+        System.out.println(testV.getParent().getY() + " VOLVO " + testV.getParent().getX());
+
+
     }
-
-
-
-
 
 /*
     public CarTransport(int x, int y, int dir, String modelName, double enginePower, double currentSpeed, Color color,

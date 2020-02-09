@@ -7,16 +7,18 @@ public class Volvo240 implements Transportable{
 
 
 
+
     public Volvo240(double trimFactor, Car parent) {
         this.parent = parent;
+
     }
 
 //int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, int x, int y, int dir
    public Volvo240() {
        parent = new Car(2, 100, 0, Color.black, "Volvo240", 1,1,1);
 
-   }
 
+   }
 
 
 
@@ -25,16 +27,20 @@ public class Volvo240 implements Transportable{
     }
 
 
+
+
+
     public void move() {
-        if(parent.getDir() == 0) {
-            parent.setX((int) parent.getCurrentSpeed());
-        }else if(parent.getDir() == 1) {
-            parent.setY((int) parent.getCurrentSpeed());
-        } else if(parent.getDir() == 2) {
-            parent.setX((int) parent.getCurrentSpeed() * -1);
-        } else if (parent.getDir() == 3) {
-            parent.setY((int) parent.getCurrentSpeed() * -1);
-        }
+            if (parent.getDir() == 0) {
+                parent.setX((int) parent.getCurrentSpeed());
+            } else if (parent.getDir() == 1) {
+                parent.setY((int) parent.getCurrentSpeed());
+            } else if (parent.getDir() == 2) {
+                parent.setX((int) parent.getCurrentSpeed() * -1);
+            } else if (parent.getDir() == 3) {
+                parent.setY((int) parent.getCurrentSpeed() * -1);
+            }
+
     }
 
     public double speedFactor(){

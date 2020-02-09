@@ -2,8 +2,6 @@
 public interface ITruck  {
 
 
-
-
     boolean isIdle();
 
     void incrementAngle(int amount);

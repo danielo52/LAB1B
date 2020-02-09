@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Car implements Movable {
 
@@ -11,6 +12,7 @@ public class Car implements Movable {
     private double currentSpeed;
     private Color color;
     private String modelName;
+
 
 
 
@@ -230,6 +232,22 @@ public class Car implements Movable {
         test.getParent().setX(11);
 
         System.out.println(cT.isInVicinity(test));
+
+        ArrayList<Transportable> listan = new ArrayList<>();
+        int testInt = 4;
+
+        Shop testShop = new Shop(listan, testInt);
+
+        ArrayList<Volvo240> testListVolvo = new ArrayList<>();
+
+        Shop testShopVolvo = new Shop(testListVolvo, testInt);
+
+
+
+
+
+        Volvo240 testBil = new Volvo240();
+
 
 
     /*
