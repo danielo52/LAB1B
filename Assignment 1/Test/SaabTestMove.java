@@ -11,150 +11,148 @@ public class SaabTestMove {
     @Before
     public void init() {
         test = new Saab95();
-        test.setCurrentSpeed(50);
+        test.getParent().setCurrentSpeed(50);
 
     }
 
-    /*
-    Testning av incremenet/decrement speed först.
-    Sedan testning av move().
-     */
+
     @Test
     public void testGetEnginePower() {
-        assertTrue(test.getEnginePower() == 125);
+        assertTrue(test.getParent().getEnginePower() == 125);
     }
 
     @Test
     public void testIncrementSpeedEnginePower() {
         test.incrementSpeed(1);
-        assertTrue(test.getCurrentSpeed() <= 125);
+        assertTrue(test.getParent().getCurrentSpeed() <= 125);
     }
 
     @Test
     public void testDecrementSpeedActuallyDecrementing() {
-        double testSpeed = test.getCurrentSpeed();
+        double testSpeed = test.getParent().getCurrentSpeed();
         test.decrementSpeed(5);
-        assertTrue(test.getCurrentSpeed() < testSpeed);
+        assertTrue(test.getParent().getCurrentSpeed() < testSpeed);
     }
 
     @Test
     public void testMoveForDir0X() {
-        test.setDir(0);
-        test.setCurrentSpeed(50);
-        test.move();
-        assertTrue(test.getX() == 50);
+        test.getParent().setDir(0);
+        test.getParent().setCurrentSpeed(50);
+        test.getParent().move();
+        assertTrue(test.getParent().getX() == 50);
     }
 
     @Test
     public void testMoveForDir0Y() {
-        test.setDir(0);
-        test.setCurrentSpeed(50);
-        test.move();
-        assertTrue(test.getY() == 1);
+        test.getParent().setDir(0);
+        test.getParent().setCurrentSpeed(50);
+        test.getParent().move();
+        assertTrue(test.getParent().getY() == 1);
     }
 
     @Test
     public void testMoveForDir1X() {
-        test.setDir(1);
-        test.setCurrentSpeed(50);
-        test.move();
-        assertTrue(test.getX() == 1);
+        test.getParent().setDir(1);
+        test.getParent().setCurrentSpeed(50);
+        test.getParent().move();
+        assertTrue(test.getParent().getX() == 1);
     }
 
     @Test
     public void testMoveForDir1Y() {
-        test.setDir(1);
-        test.setCurrentSpeed(50);
-        test.move();
-        assertTrue(test.getY() == 50);
+        test.getParent().setDir(1);
+        test.getParent().setCurrentSpeed(50);
+        test.getParent().move();
+        assertTrue(test.getParent().getY() == 50);
     }
 
     @Test
     public void testMoveForDir2X() {
-        test.setDir(2);
-        test.setCurrentSpeed(30);
-        test.move();
-        assertTrue(test.getX() == -30);
+        test.getParent().setDir(2);
+        test.getParent().setCurrentSpeed(30);
+        test.getParent().move();
+        assertTrue(test.getParent().getX() == -30);
     }
 
     @Test
     public void testMoveForDir2Y() {
-        test.setDir(2);
-        test.setCurrentSpeed(30);
-        test.move();
-        assertTrue(test.getY() == 1);
+        test.getParent().setDir(2);
+        test.getParent().setCurrentSpeed(30);
+        test.getParent().move();
+        assertTrue(test.getParent().getY() == 1);
     }
-    /*
-    Gör klart de sista testerna
-     */
+
 
 
     //Testning move efter flera turns. Init = initial dir. L = turnLeft. R = turnRight.
     @Test
     public void testMoveAfterSeveralTurnsInit1LLL() {
-        test.setCurrentSpeed(30);
-        test.setDir(1);
-        test.turnLeft();
-        test.turnLeft();
-        test.turnLeft();
-        test.move();
-        assertTrue(test.getX() == 30 && test.getY() == 1); //init test. båda true så behöver ej testa igen
+        test.getParent().setCurrentSpeed(30);
+        test.getParent().setDir(1);
+        test.getParent().turnLeft();
+        test.getParent().turnLeft();
+        test.getParent().turnLeft();
+        test.getParent().move();
+        assertTrue(test.getParent().getX() == 30 && test.getParent().getY() == 1); //init test. båda true så behöver ej testa igen
     }
 
     @Test
     public void testMoveSeveralTurnsInit1LRRRAndCheckXY() {
-        test.setCurrentSpeed(40);
-        test.setDir(1);
-        test.turnLeft();
-        test.turnRight();
-        test.turnRight();
-        test.turnRight();
-        test.move();
-        assertTrue(test.getX() == 1 && test.getY() == -40);
+        test.getParent().setCurrentSpeed(40);
+        test.getParent().setDir(1);
+        test.getParent().turnLeft();
+        test.getParent().turnRight();
+        test.getParent().turnRight();
+        test.getParent().turnRight();
+        test.getParent().move();
+        assertTrue(test.getParent().getX() == 1 && test.getParent().getY() == -40);
     }
 
     @Test
     public void testTurnRLLMoveThenTurnLRR() {
-        test.setDir(1);
-        test.setCurrentSpeed(30);
-        test.turnLeft();
-        test.move();
-        test.turnRight();
-        test.move();
-        assertTrue(test.getX() == -30 && test.getY() == 30);
+        test.getParent().setDir(1);
+        test.getParent().setCurrentSpeed(30);
+        test.getParent().turnLeft();
+        test.getParent().move();
+        test.getParent().turnRight();
+        test.getParent().move();
+        assertTrue(test.getParent().getX() == -30 && test.getParent().getY() == 30);
     }
 
     @Test
     public void testTurnsAndMove() {
-        test.setDir(1);
-        test.setCurrentSpeed(10);
-        test.turnLeft();
-        test.move(); //y = 1, x = -10
-        test.turnLeft();
-        test.move(); //y = -10, x = 10
-        assertTrue(test.getX() == -10 && test.getY() == -10);
+        test.getParent().setDir(1);
+        test.getParent().setCurrentSpeed(10);
+        test.getParent().turnLeft();
+        test.getParent().move(); //y = 1, x = -10
+        test.getParent().turnLeft();
+        test.getParent().move(); //y = -10, x = 10
+        assertTrue(test.getParent().getX() == -10 && test.getParent().getY() == -10);
     }
     @Test
     public void testGasNotDecrementing() {
-        test.setCurrentSpeed(20);
-        double testSpeed = test.getCurrentSpeed();
+        test.getParent().setCurrentSpeed(20);
+        double testSpeed = test.getParent().getCurrentSpeed();
         test.gas(0);
-        assertTrue(test.getCurrentSpeed() >= testSpeed);
+        assertTrue(test.getParent().getCurrentSpeed() >= testSpeed);
 
     }
 
     @Test
     public void testGasNotAcceptingHigherValues() {
-        test.setCurrentSpeed(20);
+        test.getParent().setCurrentSpeed(20);
         test.gas(12);
-        assertTrue(test.getCurrentSpeed() == 20);
+        assertTrue(test.getParent().getCurrentSpeed() == 20);
     }
 
     @Test
     public void testGasNotAcceptingLowerValues() {
-        test.setCurrentSpeed(20);
+        test.getParent().setCurrentSpeed(20);
         test.gas(-10);
-        assertTrue(test.getCurrentSpeed() == 20);
+        assertTrue(test.getParent().getCurrentSpeed() == 20);
     }
+
+
+
 
 }

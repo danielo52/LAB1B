@@ -6,7 +6,7 @@ import org.junit.runners.Suite;
 import static junit.framework.TestCase.assertTrue;
 
 public class TestCarMethods {
-
+/*
     private Volvo240 test;
 
     @Before
