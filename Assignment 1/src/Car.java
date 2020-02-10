@@ -235,12 +235,14 @@ public class Car implements Movable {
 
         ArrayList<Transportable> listan = new ArrayList<>();
         int testInt = 4;
-
+/*
         Shop testShop = new Shop(listan, testInt);
 
         ArrayList<Volvo240> testListVolvo = new ArrayList<>();
 
         Shop testShopVolvo = new Shop(testListVolvo, testInt);
+
+ */
 
 
 

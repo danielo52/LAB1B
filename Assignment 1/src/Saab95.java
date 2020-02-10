@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Saab95 implements Transportable{
 
@@ -80,6 +81,10 @@ public class Saab95 implements Transportable{
         } else  {
             incrementSpeed(amount);
         }
+    }
+
+    public static ArrayList createArrayList() {
+        return new ArrayList<Saab95>();
     }
 
 }

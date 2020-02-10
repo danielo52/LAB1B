@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Volvo240 implements Transportable{
 
@@ -13,6 +14,7 @@ public class Volvo240 implements Transportable{
 
     }
 
+
 //int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, int x, int y, int dir
    public Volvo240() {
        parent = new Car(2, 100, 0, Color.black, "Volvo240", 1,1,1);
@@ -20,16 +22,10 @@ public class Volvo240 implements Transportable{
 
    }
 
-
-
     public Car getParent() {
         return parent;
     }
-
-
-
-
-
+/*
     public void move() {
             if (parent.getDir() == 0) {
                 parent.setX((int) parent.getCurrentSpeed());
@@ -43,6 +39,8 @@ public class Volvo240 implements Transportable{
 
     }
 
+ */
+
     public double speedFactor(){
         return parent.getEnginePower() * 0.01 * trimFactor;
     }
@@ -50,8 +48,6 @@ public class Volvo240 implements Transportable{
     public void incrementSpeed(double amount){
 	    parent.setCurrentSpeed(Math.min(parent.getCurrentSpeed() + speedFactor() * amount, parent.getEnginePower()));
     }
-
-
 
     public void decrementSpeed(double amount){
         parent.setCurrentSpeed(Math.max(parent.getCurrentSpeed() - speedFactor() * amount,0));
@@ -72,6 +68,10 @@ public class Volvo240 implements Transportable{
         } else  {
             incrementSpeed(amount);
         }
+    }
+
+    public static ArrayList createArrayList() {
+        return new ArrayList<Volvo240>();
     }
 
 }

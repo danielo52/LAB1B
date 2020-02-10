@@ -10,16 +10,7 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
 (i.e. it CANNOT transport "Scania").
  */
 
-/*
-    private int x;
-    private int y;
-    private int dir;
-    private String modelName;
-    private double enginePower;
-    private double currentSpeed;
-    private Color color;
 
- */
 
     private Car parent;
     private boolean rampDown;
