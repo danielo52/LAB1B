@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarList<T> {
-
+/*
     Class theClass = null;
 
     public CarList(Class theClass) {
@@ -55,4 +55,6 @@ public class CarList<T> {
     public void setS(Saab95 s) {
         this.s = s;
     }
+
+ */
 }

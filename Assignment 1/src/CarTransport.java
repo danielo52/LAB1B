@@ -25,7 +25,7 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
         this.maxLoad = maxLoad;
         this.currentLoad = currentLoad;
     }
-    //int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, int x, int y, int dir
+
     public CarTransport() {
         parent = new Car(2, 200, 0, Color.green, "CarTransporter 9000",
                 1,1,1);
@@ -36,7 +36,6 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
 
     }
 
-    //WE NEED MORE FIELDS BUT WE START OFF WITH THESE. JUST SO WE CAN IMPLEMENT SOME VERY NECESSARY METHODS
     public Car getParent() {
         return parent;
     }
@@ -77,28 +76,24 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
             transports.add(carLoad);
             currentLoad++;
         } else {
-            System.out.println("Please move closer to the Car Transport");
+            System.out.println("Please consult with the driver for further instructions");
         }
     }
 
-    public void unloadCar(CarStack stack) {
+    public void unloadCar() {
         if(isRampDown() && isIdle()) {
-            Transportable t = transports.get(currentLoad);
+            Transportable t = transports.get(currentLoad-1);
             transports.remove(currentLoad);
             currentLoad--;
             t.getParent().setY(parent.getY() + 1);
             t.getParent().setX(parent.getX() + 1);
         }
-        /*
-        if(c.isElementOf(carTrans.getTransports()) && carTrans.isIdle()) -> unload to "nearby" x/y.
-         */
     }
 
     /*
     Move() för en CarTransport ska flytta som vanligt. Men dessutom sätta X/Y för varje element i carStacken till samma
     x/y som CarTransporten har.
      */
-
 
     public void moveCarTransport() {
         getParent().move();

@@ -1,5 +1,5 @@
 import java.awt.*;
-public class Scania implements ITruck {
+public class Scania {
 
     private Car parent;
     private int nrGears;
@@ -7,7 +7,6 @@ public class Scania implements ITruck {
     //private boolean bedDown; -> We probably won't need this.
     //For lack of a better term, the back of the truck is called "Bed".
     private int bedAngle;
-
 
 
     public Scania(Car parent, int nrGears, int bedAngle) {
@@ -96,7 +95,7 @@ public class Scania implements ITruck {
 
     }
 
-    public double speedFactor() {
+    private double speedFactor() {
         return parent.getEnginePower() * 0.001 * nrGears;
     }
 
@@ -134,13 +133,13 @@ public class Scania implements ITruck {
 /*
 ***** METHODS FOR THE BED *****
  */
-    public void incrementAngle(int amount) {
+    private void incrementAngle(int amount) {
         if(amount > 0 && (bedAngle + amount <= 70)) {
             bedAngle += amount;
         }
     }
 
-    public void decrementAngle(int amount) {
+    private void decrementAngle(int amount) {
         if(amount > 0 && (bedAngle - amount >= 0)) {
             bedAngle -= amount;
         }
@@ -149,13 +148,13 @@ public class Scania implements ITruck {
 
     public void raiseBed() {
         if(isIdle()){
-            incrementAngle(3);
+            incrementAngle(10);
         }
     }
 
     public void lowerBed() {
         if(isIdle()) {
-            decrementAngle(3);
+            decrementAngle(10);
         }
     }
 
@@ -183,6 +182,7 @@ public class Scania implements ITruck {
     }
 
 
+
 public static void main(String[] args) {
 
         // Half asses testing prior to Junit.
@@ -200,8 +200,10 @@ public static void main(String[] args) {
 
          */
 
-
-
+        Scania nyTest = new Scania();
+        System.out.println(nyTest.getBedAngle());
+        nyTest.incrementAngle(20);
+        System.out.println(nyTest.getBedAngle());
 
     }
 

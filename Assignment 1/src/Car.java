@@ -127,7 +127,10 @@ public class Car implements Movable {
         return dir;
     }
 
-
+    /**
+     * Allows a Car object to move. It checks the Cars direction, and moves the Car with length currentSpeed in that
+     * direction.
+     */
     public void move() {
         if(dir == 0) {
             setX((int) getCurrentSpeed());
@@ -140,7 +143,10 @@ public class Car implements Movable {
         }
     }
 
-
+    /**
+     * Allows a Car object to turn left. It checks current direction, and changes to the left depending on where the
+     * car is directed prior to moving.
+     */
     public void turnLeft() {
         int direction = getDir();
         if(direction == 0) {
@@ -154,6 +160,10 @@ public class Car implements Movable {
         }
     }
 
+    /**
+     *  Allows a Car object to turn right. It checks current direction, and changes to the right depending on where the
+     *    car is directed prior to moving.
+     */
 
     public void turnRight() {
         int direction = getDir();

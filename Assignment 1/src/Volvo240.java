@@ -7,16 +7,11 @@ public class Volvo240 implements Transportable{
     private Car parent;
 
 
-
-
     public Volvo240(double trimFactor, Car parent) {
         this.parent = parent;
 
     }
-
-
-//int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, int x, int y, int dir
-   public Volvo240() {
+    public Volvo240() {
        parent = new Car(2, 100, 0, Color.black, "Volvo240", 1,1,1);
 
 
@@ -41,7 +36,7 @@ public class Volvo240 implements Transportable{
 
  */
 
-    public double speedFactor(){
+    private double speedFactor(){
         return parent.getEnginePower() * 0.01 * trimFactor;
     }
 
@@ -70,9 +65,7 @@ public class Volvo240 implements Transportable{
         }
     }
 
-    public static ArrayList createArrayList() {
-        return new ArrayList<Volvo240>();
-    }
+
 
 }
 
@@ -90,7 +83,11 @@ public class Volvo240 implements Transportable{
         stopEngine();
     }
 
-     */
+
+
+    public static ArrayList createArrayList() {
+        return new ArrayList<Volvo240>();
+    }
 
    /*
     public Volvo240(double trimFactor, int nrDoors, double enginePower, double currentSpeed, Color color,

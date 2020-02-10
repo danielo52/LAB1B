@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Saab95 implements Transportable{
+public class Saab95 implements Transportable {
 
     private boolean turboOn;
     private Car parent;
@@ -12,7 +12,7 @@ public class Saab95 implements Transportable{
 
     // int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, int x, int y, int dir
     public Saab95() {
-        parent = new Car(2, 125, 0, Color.red, "Saab95", 1,1,1);
+        parent = new Car(2, 125, 0, Color.red, "Saab95", 1, 1, 1);
     }
 
 
@@ -41,33 +41,33 @@ public class Saab95 implements Transportable{
         return parent;
     }
 
-    public void setTurboOn(){
-	    turboOn = true;
+    public void setTurboOn() {
+        turboOn = true;
     }
 
 
-    public void setTurboOff(){
-	    turboOn = false;
+    public void setTurboOff() {
+        turboOn = false;
     }
 
 
-    public void decrementSpeed(double amount){
+    public void decrementSpeed(double amount) {
         parent.setCurrentSpeed(parent.getCurrentSpeed() - speedFactor() * amount);
     }
 
-    public void incrementSpeed(double amount){
+    public void incrementSpeed(double amount) {
         parent.setCurrentSpeed(parent.getCurrentSpeed() + speedFactor() * amount);
     }
 
 
-    public double speedFactor(){
+    private double speedFactor() {
         double turbo = 1;
-        if(turboOn) turbo = 1.3;
+        if (turboOn) turbo = 1.3;
         return parent.getEnginePower() * 0.01 * turbo;
     }
 
-    public void brake(double amount){
-        if(amount < 0 || amount > 1) {
+    public void brake(double amount) {
+        if (amount < 0 || amount > 1) {
             System.out.println("Please enter a value between 0 and 1");
         } else {
             decrementSpeed(amount);
@@ -75,16 +75,19 @@ public class Saab95 implements Transportable{
 
     }
 
-    public void gas(double amount){
-        if(amount < 0 || amount > 1) {
+    public void gas(double amount) {
+        if (amount < 0 || amount > 1) {
             System.out.println("Please enter a value between 0 and 1");
-        } else  {
+        } else {
             incrementSpeed(amount);
         }
     }
+}
 
+    /*
     public static ArrayList createArrayList() {
         return new ArrayList<Saab95>();
     }
 
 }
+     */
