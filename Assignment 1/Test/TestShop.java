@@ -14,9 +14,9 @@ public class TestShop {
     private Saab95 saab;
     @Before
     public void init() {
-        testV = new Shop(max, "Ronnys Bil och Sil");
-        testS = new Shop(max,"Ronnys Bil och Sil");
-        testTr = new Shop(max,"Ronnys Bil och Sil");
+        testV = new Shop<>(max, "Ronnys Bil och Sil", 15, 16);
+        testS = new Shop<>(max,"Ronnys Bil och Sil", 15, 17);
+        testTr = new Shop<>(max,"Ronnys Bil och Sil", 15, 18);
         volvo = new Volvo240();
         saab = new Saab95();
     }

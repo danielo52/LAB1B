@@ -4,6 +4,8 @@ import java.util.Deque;
 
 public class Shop<T extends Transportable> {
 
+    int x;
+    int y;
 
     private int maxCars;
     private int currentCars = 0;
@@ -14,11 +16,14 @@ public class Shop<T extends Transportable> {
     /**
      * when we instansiate a Shop, we set the type of the arrayList to the same type as the Shop.
      * i.e. Shop<Volvo240> sets cars = ArrayList<Volvo240>
+     *     x and y since a shop needs a position/location as well. No dir since it's not moving.
      */
-    public Shop(int maxCars, String shopName) {
+    public Shop(int maxCars, String shopName, int x, int y) {
         this.cars = new ArrayList<T>();
         this.maxCars = maxCars;
         this.shopName = shopName;
+        this.x = x;
+        this.y = y;
     }
 
     /**
@@ -34,10 +39,15 @@ public class Shop<T extends Transportable> {
 
     /**
      * Here we implement FILO - So if we want to remove a car, we remove the last one in the list. (-1 due to indexing).
+     * it also
      */
-    public void removeLastCar() {
+    public T removeLastCar() {
+            T t = cars.get(currentCars-1);
             cars.remove(currentCars-1);
             currentCars--;
+            t.getParent().setX(getX() + 1);
+            t.getParent().setY(getX() + 1);
+            return t;
         }
 
     public int getMaxCars() {
@@ -56,6 +66,21 @@ public class Shop<T extends Transportable> {
         shopName = name;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
 
     public static void main(String[] args) {
 
@@ -78,23 +103,24 @@ public class Shop<T extends Transportable> {
 
         ArrayList<Volvo240> listy = new ArrayList<>();
 
-        Shop<Volvo240> shopV = new Shop<>(maxxad, "Pelles bilverkstad");
+        Shop<Volvo240> shopV = new Shop<>(maxxad, "Pelles bilverkstad", 15, 15);
+        Shop<Transportable> shopp = new Shop<>(maxxad, "tester", 20, 20);
+
         shopV.addCar(testVolvo);
-
-        Shop<Volvo240> shoptest = new Shop(maxxad, "testet");
-        //shoptest.addCar(testSaab);
-        Shop<Transportable> shopp = new Shop(maxxad, "tester");
-        shopp.addCar(testSaab);
-
-        //shopV.removeLastCar();
-        System.out.println(shopV.toString());
-
-        Shop<Transportable> shopTrans = new Shop<>(10, "Pelles bilservice");
+        System.out.println("Tetsting");
+        System.out.println(shopV.removeLastCar().getParent().getY());
 
 
 
 
-        System.out.println(shopV.getCars().toString());
+        //System.out.println(shopV.toString());
+
+        Shop<Transportable> shopTrans = new Shop<>(10, "Pelles bilservice", 15, 19);
+
+
+
+
+        //System.out.println(shopV.getCars().toString());
 
 
         //listy.add(testSaab);
