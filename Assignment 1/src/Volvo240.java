@@ -40,14 +40,26 @@ public class Volvo240 implements Transportable{
         return parent.getEnginePower() * 0.01 * trimFactor;
     }
 
+    /**
+     *
+     * @param amount an amount to scale the speedFactor. Method currently public due to testing.
+     */
     public void incrementSpeed(double amount){
 	    parent.setCurrentSpeed(Math.min(parent.getCurrentSpeed() + speedFactor() * amount, parent.getEnginePower()));
     }
 
+    /**
+     *
+     * @param amount an amount to scale the speedFactor. Method currently public due to testing.
+     */
     public void decrementSpeed(double amount){
         parent.setCurrentSpeed(Math.max(parent.getCurrentSpeed() - speedFactor() * amount,0));
     }
 
+    /**
+     *
+     * @param amount an amount between 0 - 1 that scales the braking.
+     */
     public void brake(double amount){
         if(amount < 0 || amount > 1) {
             System.out.println("Please enter a value between 0 and 1");
@@ -57,6 +69,10 @@ public class Volvo240 implements Transportable{
 
     }
 
+    /**
+     *
+     * @param amount an amount between 0 - 1 that scales the gas.
+     */
     public void gas(double amount){
         if(amount < 0 || amount > 1) {
             System.out.println("Please enter a value between 0 and 1");

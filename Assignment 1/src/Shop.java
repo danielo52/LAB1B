@@ -10,22 +10,31 @@ public class Shop<T> {
     private ArrayList<T> cars;
 
 
-
+    /**
+     * when we instansiate a Shop, we set the type of the arrayList to the same type as the Shop.
+     * i.e. Shop<Volvo240> sets cars = ArrayList<Volvo240>
+     */
     public Shop(int maxCars) {
         this.cars = new ArrayList<T>();
         this.maxCars = maxCars;
     }
 
-
-        public void addCar(T car) {
+    /**
+     *
+     * @param car a car to bed added to the Transport. Can't load if Transport is full.
+     */
+    public void addCar(T car) {
             if(currentCars < maxCars) {
                 cars.add(car);
                 currentCars++;
             }
         }
 
-        public void removeLastCar() {
-            cars.remove(currentCars);
+    /**
+     * Here we implement FILO - So if we want to remove a car, we remove the last one in the list. (-1 due to indexing).
+     */
+    public void removeLastCar() {
+            cars.remove(currentCars-1);
             currentCars--;
         }
 
@@ -59,14 +68,14 @@ public class Shop<T> {
 
         ArrayList<Volvo240> listy = new ArrayList<>();
 
-        Shop<Volvo240> shopV = new Shop(maxxad);
+        Shop<Volvo240> shopV = new Shop<>(maxxad);
         shopV.addCar(testVolvo);
 
 
         //shopV.removeLastCar();
         System.out.println(shopV.toString());
 
-        Shop<Transportable> shopTrans = new Shop(10);
+        Shop<Transportable> shopTrans = new Shop<>(10);
 
 
 

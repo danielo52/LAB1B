@@ -76,10 +76,10 @@ public class Scania {
     }
 
 
-
-
-
-    public void move() { //Bit of a temporary solution. It ain't a beauty but hey it's alright.
+    /**
+     * Similar to the original method from Car, but it also checks that the bed is down.
+     */
+    public void move() {
         if (isBedDown()) {
             if (parent.getDir() == 0) {
                 parent.setX((int) parent.getCurrentSpeed());
@@ -115,7 +115,10 @@ public class Scania {
 
     // **************** GETTERS & SETTERS ****************
 
-
+    /**
+     *
+     * @return nrGears used for speedFactor.
+     */
     public int getNrGears() {
         return nrGears;
     }
@@ -158,7 +161,10 @@ public class Scania {
         }
     }
 
-
+    /**
+     *
+     * @return bed must be down to enable the Scania to move/drive.
+     */
     public boolean isBedDown() {
         return getBedAngle() == 0;
     }
@@ -172,9 +178,13 @@ public class Scania {
     }
 
 
-
+    /**
+     *
+     * @param amount sets to bedAngle to some amount. Used for testing. When/if program is released towards users,
+     *               this method will be hidden.
+     */
     public void setBedAngle(int amount) {
-        if((amount > 0 && amount <= 70) && isIdle()) {
+        if((amount >= 0 && amount <= 70) && isIdle()) {
             bedAngle = amount;
         } else {
             System.out.println("Please enter a valid amount for the angle of the bed");

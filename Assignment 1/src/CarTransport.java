@@ -40,6 +40,11 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
         return parent;
     }
 
+    /**
+     *
+     * @return we can load if the ramp is DOWN.
+     *          we can drive if the ramp is UP!
+     */
     public boolean isRampDown() {
         return rampDown;
     }
@@ -70,7 +75,11 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
 
     //     ********** LOAD AND UNLOAD **********
 
-
+    /**
+     *
+     * @param carLoad takes a car to load. Checks that the car is close, ramp is down, there's room to load
+     *                and that the CarTransport isn't moving.
+     */
     public void loadCar(Transportable carLoad) {
         if(isInVicinity(carLoad) && isRampDown() && transports.size() < maxLoad && isIdle()) {
             transports.add(carLoad);
@@ -80,10 +89,13 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
         }
     }
 
+    /**
+     * Assures that the CarTransport isn't moving, and that the ramp is down. (Loadable when rampDown == true);
+     */
     public void unloadCar() {
         if(isRampDown() && isIdle()) {
             Transportable t = transports.get(currentLoad-1);
-            transports.remove(currentLoad);
+            transports.remove(currentLoad-1);
             currentLoad--;
             t.getParent().setY(parent.getY() + 1);
             t.getParent().setX(parent.getX() + 1);
@@ -95,18 +107,61 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
     x/y som CarTransporten har.
      */
 
+    /**
+     * moves the CarTransports. And moves every element in transports (i.e. the cars on the ramp) to the same position.
+     */
     public void moveCarTransport() {
         getParent().move();
         int xtemp = getParent().getX();
         int ytemp = getParent().getY();
-        for(int i = 0; i <= transports.size(); i++) {
+        for(int i = 0; i <= transports.size()-1; i++) {
             transports.get(i).getParent().setX(xtemp);
             transports.get(i).getParent().setY(ytemp);
         }
+    }
 
-        //for(int i = 0; i < transports.nrOfElements(); i++) {
-            //nada
+    /**
+     * Enables us to turn the CarTransport AND it's currentLoad to the left
+     */
+    public void carTransportTurnLeft() {
+        getParent().turnLeft();
+        int tempdir = getParent().getDir();
+        for(int i = 0; i < currentLoad; i++) {
+            transports.get(i).getParent().setDir(tempdir);
         }
+    }
+
+    /**
+     * Enables us to turn the CarTransport AND it's currentLoad to the right
+     */
+    public void carTransportTurnRight() {
+        getParent().turnRight();
+        int tempdir = getParent().getDir();
+        for(int i = 0; i < currentLoad; i++) {
+            transports.get(i).getParent().setDir(tempdir);
+        }
+    }
+
+
+/*
+    public void turnLeft() {
+        int direction = parent.getDir();
+        if(direction == 0) {
+            parent.setDir(1);
+        } else if(direction == 1) {
+            parent.setDir(2);
+        } else if(direction == 2) {
+            parent.setDir(3);
+        } else if(direction == 3) {
+            parent.setDir(0);
+        }
+    }
+
+ */
+
+
+
+
 
 
 /*
@@ -145,7 +200,7 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
 
 
     public static void main(String args[]) {
-        CarTransport test = new CarTransport();
+        /*CarTransport test = new CarTransport();
         test.setRampDownFalse();
         System.out.println(test.getRampState());
 
@@ -164,6 +219,16 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
         System.out.println("INIT PRINT");
         System.out.println(testS.getParent().getY() + " SAAB " + testS.getParent().getX());
         System.out.println(testV.getParent().getY() + " VOLVO " + testV.getParent().getX());
+
+         */
+        CarTransport test = new CarTransport();
+        test.getParent().turnLeft();
+        test.getParent().turnLeft();
+        System.out.println(test.getParent().getDir());
+
+
+
+
 
 
     }

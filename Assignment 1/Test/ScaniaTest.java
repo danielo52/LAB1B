@@ -31,13 +31,22 @@ public class ScaniaTest {
     @Test
     public void testThatNotMovingWhenBedIsUp() {
         test.setBedAngle(12);
-        //test.setCurrentSpeed(10);
+        test.getParent().setCurrentSpeed(10);
         System.out.println(test.getParent().getCurrentSpeed());
         System.out.println(test.getBedAngle());
         test.move(); //if(move() works) then Y = 11. SHOULD NOT WORK: so y = 1 i.e. no movement
         assertTrue(test.getParent().getY() == 1);
 
     }
+
+    @Test
+    public void testMovingWithBedDown() {
+        test.getParent().setCurrentSpeed(10);
+        test.getParent().move();
+        assertTrue(test.getParent().getY() == 10);
+    }
+
+
 
 
 }
