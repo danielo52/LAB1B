@@ -1,5 +1,6 @@
 import java.awt.*;
-public class Scania {
+
+public class Scania implements ITruck {
 
     private Car parent;
     private int nrGears;
@@ -20,52 +21,6 @@ public class Scania {
         setNrGears(12);
         setBedAngle(0);
     }
-
-/*
-    public Scania(int nrDoors, double enginePower, double currentSpeed, Color color,
-                  String modelName, int x, int y, int dir, int nrGears, boolean bedDown, int bedAngle) {
-        super(nrDoors,enginePower,currentSpeed,color,modelName,x,y, dir);
-                this.nrGears = nrGears;
-                this.bedDown = bedDown;
-                this.bedAngle = bedAngle;
-    }
-
- */
-
-
-
-
-/*
-    public Scania(double enginePower, double currentSpeed, int x, int y, int dir, boolean bedDown, int bedAngle, Color color,
-                  String modelName, IBed regularBed, int nrGears) {
-        this.enginePower = enginePower;
-        this.currentSpeed = currentSpeed;
-        this.x = x;
-        this.y = y;
-        this.dir = dir;
-        this.bedDown = bedDown;
-        this.bedAngle = bedAngle;
-        this.color = color;
-        this.modelName = modelName;
-        this.regularBed = regularBed;
-    }
-
- */
-/*
-    public Scania() {
-        setEnginePower(150);
-        setNrDoors(2);
-        setBedAngle(0);
-        setModelName("Scania 79");
-        setX(1);
-        setY(1);
-        setDir(1);
-        stopEngine();
-        setNrGears(12);
-
-    }
-
- */
 
 
     /*
@@ -342,6 +297,52 @@ public static void main(String[] args) {
     setNrGears(12);
 
      */
+    /*
+    public Scania(int nrDoors, double enginePower, double currentSpeed, Color color,
+                  String modelName, int x, int y, int dir, int nrGears, boolean bedDown, int bedAngle) {
+        super(nrDoors,enginePower,currentSpeed,color,modelName,x,y, dir);
+                this.nrGears = nrGears;
+                this.bedDown = bedDown;
+                this.bedAngle = bedAngle;
+    }
+
+ */
+
+
+
+
+/*
+    public Scania(double enginePower, double currentSpeed, int x, int y, int dir, boolean bedDown, int bedAngle, Color color,
+                  String modelName, IBed regularBed, int nrGears) {
+        this.enginePower = enginePower;
+        this.currentSpeed = currentSpeed;
+        this.x = x;
+        this.y = y;
+        this.dir = dir;
+        this.bedDown = bedDown;
+        this.bedAngle = bedAngle;
+        this.color = color;
+        this.modelName = modelName;
+        this.regularBed = regularBed;
+    }
+
+ */
+/*
+    public Scania() {
+        setEnginePower(150);
+        setNrDoors(2);
+        setBedAngle(0);
+        setModelName("Scania 79");
+        setX(1);
+        setY(1);
+        setDir(1);
+        stopEngine();
+        setNrGears(12);
+
+    }
+
+ */
+
 
 
 

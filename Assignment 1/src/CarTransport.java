@@ -26,6 +26,9 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
         this.currentLoad = currentLoad;
     }
 
+    /**
+     * A "default" CarTransport
+     */
     public CarTransport() {
         parent = new Car(2, 200, 0, Color.green, "CarTransporter 9000",
                 1,1,1);
@@ -92,14 +95,20 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
     /**
      * Assures that the CarTransport isn't moving, and that the ramp is down. (Loadable when rampDown == true);
      */
-    public void unloadCar() {
+    public Transportable unloadCar() {
+        Transportable t = transports.get(currentLoad-1);
         if(isRampDown() && isIdle()) {
-            Transportable t = transports.get(currentLoad-1);
             transports.remove(currentLoad-1);
             currentLoad--;
             t.getParent().setY(parent.getY() + 1);
             t.getParent().setX(parent.getX() + 1);
+            if(t.getClass() == Volvo240.class) {
+                 return (Volvo240) t;
+            } else if(t.getClass() == Saab95.class) {
+                return (Saab95) t;
+            }
         }
+        return null;
     }
 
     /*
@@ -143,45 +152,6 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
     }
 
 
-/*
-    public void turnLeft() {
-        int direction = parent.getDir();
-        if(direction == 0) {
-            parent.setDir(1);
-        } else if(direction == 1) {
-            parent.setDir(2);
-        } else if(direction == 2) {
-            parent.setDir(3);
-        } else if(direction == 3) {
-            parent.setDir(0);
-        }
-    }
-
- */
-
-
-
-
-
-
-/*
-    public void move() { //Bit of a temporary solution. It ain't a beauty but hey it's alright.
-        if ((isRampDown())) {
-            if (parent.getDir() == 0) {
-                parent.setX((int) parent.getCurrentSpeed());
-            } else if (getParent().getDir() == 1) {
-                parent.setY((int) parent.getCurrentSpeed());
-            } else if (getParent().getDir() == 2) {
-                parent.setX((int) parent.getCurrentSpeed() * -1);
-            } else if (getParent().getDir() == 3) {
-                parent.setY((int) parent.getCurrentSpeed() * -1);
-            }
-        }
-
-
-    }
-
- */
 
 
     public boolean isInVicinity(Transportable c) {
@@ -219,12 +189,16 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
         System.out.println("INIT PRINT");
         System.out.println(testS.getParent().getY() + " SAAB " + testS.getParent().getX());
         System.out.println(testV.getParent().getY() + " VOLVO " + testV.getParent().getX());
-
          */
         CarTransport test = new CarTransport();
         test.getParent().turnLeft();
         test.getParent().turnLeft();
         System.out.println(test.getParent().getDir());
+
+        Volvo240 testV = new Volvo240();
+        Saab95 testS = new Saab95();
+        test.loadCar(testS);
+        System.out.println(test.unloadCar());
 
 
 
@@ -325,6 +299,24 @@ We assumed that this is a "normal" 12/18-wheeler type of truck, that can transpo
 
  */
 
+/*
+    public void move() { //Bit of a temporary solution. It ain't a beauty but hey it's alright.
+        if ((isRampDown())) {
+            if (parent.getDir() == 0) {
+                parent.setX((int) parent.getCurrentSpeed());
+            } else if (getParent().getDir() == 1) {
+                parent.setY((int) parent.getCurrentSpeed());
+            } else if (getParent().getDir() == 2) {
+                parent.setX((int) parent.getCurrentSpeed() * -1);
+            } else if (getParent().getDir() == 3) {
+                parent.setY((int) parent.getCurrentSpeed() * -1);
+            }
+        }
+
+
+    }
+
+ */
 
 
 

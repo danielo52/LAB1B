@@ -4,9 +4,9 @@ public interface ITruck  {
 
     boolean isIdle();
 
-    void incrementAngle(int amount);
+    //void incrementAngle(int amount);
 
-    void decrementAngle(int amount);
+    //void decrementAngle(int amount);
 
     void raiseBed();
 

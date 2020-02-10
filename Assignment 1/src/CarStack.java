@@ -18,7 +18,7 @@ public class CarStack {
 
     public void push(Transportable t) {
         if (top > size) {
-            //error get fucked.
+            //error.
         }
         else {
             top++;

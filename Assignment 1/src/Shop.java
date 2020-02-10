@@ -2,21 +2,23 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Deque;
 
-public class Shop<T> {
+public class Shop<T extends Transportable> {
 
 
     private int maxCars;
     private int currentCars = 0;
     private ArrayList<T> cars;
+    private String shopName;
 
 
     /**
      * when we instansiate a Shop, we set the type of the arrayList to the same type as the Shop.
      * i.e. Shop<Volvo240> sets cars = ArrayList<Volvo240>
      */
-    public Shop(int maxCars) {
+    public Shop(int maxCars, String shopName) {
         this.cars = new ArrayList<T>();
         this.maxCars = maxCars;
+        this.shopName = shopName;
     }
 
     /**
@@ -46,6 +48,14 @@ public class Shop<T> {
             return cars;
     }
 
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String name) {
+        shopName = name;
+    }
+
 
     public static void main(String[] args) {
 
@@ -68,14 +78,18 @@ public class Shop<T> {
 
         ArrayList<Volvo240> listy = new ArrayList<>();
 
-        Shop<Volvo240> shopV = new Shop<>(maxxad);
+        Shop<Volvo240> shopV = new Shop<>(maxxad, "Pelles bilverkstad");
         shopV.addCar(testVolvo);
 
+        Shop<Volvo240> shoptest = new Shop(maxxad, "testet");
+        //shoptest.addCar(testSaab);
+        Shop<Transportable> shopp = new Shop(maxxad, "tester");
+        shopp.addCar(testSaab);
 
         //shopV.removeLastCar();
         System.out.println(shopV.toString());
 
-        Shop<Transportable> shopTrans = new Shop<>(10);
+        Shop<Transportable> shopTrans = new Shop<>(10, "Pelles bilservice");
 
 
 

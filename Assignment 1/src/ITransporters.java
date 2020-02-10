@@ -2,13 +2,19 @@
 
 public interface ITransporters {
 
-    public boolean isIdle();
+     boolean isIdle();
 
-    public void loadCar(Transportable carLoad);
+     boolean isRampDown();
 
-    public void unloadCar();
+     void loadCar(Transportable carLoad);
 
-    public boolean isInVicinity(Transportable c);
+     Transportable unloadCar();
+
+     boolean isInVicinity(Transportable c);
+
+
+
+
 
 
 }
