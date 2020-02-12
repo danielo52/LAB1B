@@ -38,7 +38,7 @@ public class TestCarTransport {
         test.loadCar(testS);
         test.loadCar(testV);
         test.getParent().setCurrentSpeed(10);
-        test.moveCarTransport();
+        test.move();
         assertTrue(test.getParent().getY() == 10);
     }
 
@@ -47,20 +47,36 @@ public class TestCarTransport {
         test.loadCar(testS);
         test.loadCar(testV);
         test.getParent().setCurrentSpeed(10);
-        test.moveCarTransport();
+        test.move();
         assertTrue(testS.getParent().getY() == 10);
     }
 
     @Test
+    public void testCarTranSportGas() {
+        test.getParent().setCurrentSpeed(10);
+        test.gas(1);
+        assertTrue(test.getParent().getCurrentSpeed() == 11.4);
+    }
+
+    @Test
+    public void tesCarTransportBrake() {
+        test.getParent().setCurrentSpeed(10);
+        test.brake(1);
+        assertTrue(test.getParent().getCurrentSpeed() == 8.6);
+    }
+
+
+
+    @Test
     public void testCTTurnRightIsCorrect() {
-        test.carTransportTurnRight();
+        test.turnRight();
         assertTrue(test.getParent().getDir() == 0);
 
     }
 
     @Test
     public void testCTTurnLeftIsCorrect() {
-        test.carTransportTurnLeft();
+        test.turnLeft();
         assertTrue(test.getParent().getDir() == 2);
 
     }
@@ -68,14 +84,14 @@ public class TestCarTransport {
     @Test
     public void testCTTurnLeftIsCorrectForTransports() {
         test.loadCar(testV);
-        test.carTransportTurnLeft();
+        test.turnLeft();
         assertTrue(testV.getParent().getDir() == 2);
     }
 
     @Test
     public void testCTTurnRightIsCorrectForTransports() {
         test.loadCar(testV);
-        test.carTransportTurnRight();
+        test.turnRight();
         assertTrue(testV.getParent().getDir() == 0);
     }
 

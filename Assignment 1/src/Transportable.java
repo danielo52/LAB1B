@@ -1,21 +1,17 @@
-import java.util.ArrayList;
+/*
+Interface for Cars that are transportable.
+ */
 
 public interface Transportable {
 
 
-    Car getParent();
 
+    LandVehicle getParent();
 
+    void setIsLoadedTrue();
 
+    void setIsLoadedFalse();
 
-/*
-    static ArrayList createArrayList() {
-        return new ArrayList<Transportable>();
-    }
-
- */
-
-
-
+    boolean getIsLoaded();
 
 }

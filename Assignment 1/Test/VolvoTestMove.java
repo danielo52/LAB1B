@@ -6,7 +6,7 @@ import org.junit.runners.Suite;
 import static junit.framework.TestCase.assertTrue;
 
 public class VolvoTestMove {
-/*
+
     private Volvo240 test;
     @Before
     public void init() {
@@ -18,88 +18,88 @@ public class VolvoTestMove {
 
     @Test
     public void testGetEnginePower() {
-        assertTrue(test.getEnginePower() == 100);
+        assertTrue(test.getParent().getEnginePower() == 100);
     }
 
     @Test
     public void testIncrementSpeedEnginePower() {
         test.incrementSpeed(1);
-        assertTrue(test.getCurrentSpeed() <= 100);
+        assertTrue(test.getParent().getCurrentSpeed() <= 100);
     }
 
     @Test
     public void testIncrementSpeedWithSpeedFactor() {
         test.incrementSpeed(300);
-        assertTrue(test.getCurrentSpeed() <= 100);
+        assertTrue(test.getParent().getCurrentSpeed() <= 100);
     }
 
     @Test
     public void testDecrementSpeedActuallyDecrementing() {
-        double testSpeed = test.getCurrentSpeed();
+        double testSpeed = test.getParent().getCurrentSpeed();
         test.decrementSpeed(5);
-        assertTrue(test.getCurrentSpeed() < testSpeed);
+        assertTrue(test.getParent().getCurrentSpeed() < testSpeed);
     }
 
 
     @Test
     public void testMoveForDir0X() {
-        test.setDir(0);
-        test.setCurrentSpeed(50);
-        test.move();
-        assertTrue(test.getX() == 50);
+        test.getParent().setDir(0);
+        test.getParent().setCurrentSpeed(50);
+        test.moveCar();
+        assertTrue(test.getParent().getX() == 50);
     }
 
     @Test
     public void testMoveForDir0Y() {
-        test.setDir(0);
-        test.setCurrentSpeed(50);
-        test.move();
-        assertTrue(test.getY() == 1);
+        test.getParent().setDir(0);
+        test.getParent().setCurrentSpeed(50);
+        test.getParent().move();
+        assertTrue(test.getParent().getY() == 1);
     }
 
     @Test
     public void testMoveForDir1X() {
-        test.setDir(1);
-        test.setCurrentSpeed(50);
-        test.move();
-        assertTrue(test.getX() == 1);
+        test.getParent().setDir(1);
+        test.getParent().setCurrentSpeed(50);
+        test.getParent().move();
+        assertTrue(test.getParent().getX() == 1);
     }
 
     @Test
     public void testMoveForDir1Y() {
-        test.setDir(1);
-        test.setCurrentSpeed(50);
-        test.move();
-        assertTrue(test.getY() == 50);
+        test.getParent().setDir(1);
+        test.getParent().setCurrentSpeed(50);
+        test.getParent().move();
+        assertTrue(test.getParent().getY() == 50);
     }
 
     @Test
     public void testMoveForDir2X() {
-        test.setDir(2);
-        test.setCurrentSpeed(30);
-        test.move();
-        assertTrue(test.getX() == -30);
+        test.getParent().setDir(2);
+        test.getParent().setCurrentSpeed(30);
+        test.getParent().move();
+        assertTrue(test.getParent().getX() == -30);
     }
 
     @Test
     public void testMoveForDir2Y() {
-        test.setDir(2);
-        test.setCurrentSpeed(30);
-        test.move();
-        assertTrue(test.getY() == 1);
+        test.getParent().setDir(2);
+        test.getParent().setCurrentSpeed(30);
+        test.getParent().move();
+        assertTrue(test.getParent().getY() == 1);
     }
 
 
-
+/*
     //Testning move efter flera turns. Init = initial dir. L = turnLeft. R = turnRight.
     @Test
     public void testMoveAfterSeveralTurnsInit1LLL() {
-        test.setCurrentSpeed(30);
-        test.setDir(1);
-        test.turnLeft();
-        test.turnLeft();
-        test.turnLeft();
-        test.move();
+        test.getParent().setCurrentSpeed(30);
+        test.getParent().setDir(1);
+        test.getParent().turnLeft();
+        test.getParent().turnLeft();
+        test.getParent().turnLeft();
+        test.getParent().move();
         assertTrue(test.getX() == 30 && test.getY() == 1); //init test. båda true så behöver ej testa igen
     }
 

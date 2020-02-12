@@ -1,45 +1,26 @@
 import java.awt.*;
-import java.util.ArrayList;
 
-public class Saab95 implements Transportable {
+public class Saab95 implements Transportable, Car {
 
     private boolean turboOn;
-    private Car parent;
+    private LandVehicle parent;
+    private boolean isLoaded;
 
-    public Saab95(boolean turboOn, Car parent) {
+    public Saab95(boolean turboOn, LandVehicle parent, boolean isLoaded) {
         this.parent = parent;
+        this.isLoaded = isLoaded;
     }
 
     // int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, int x, int y, int dir
     public Saab95() {
-        parent = new Car(2, 125, 0, Color.red, "Saab95", 1, 1, 1);
+        parent = new LandVehicle(2, 125, 0, Color.red, "Saab95", 1, 1, 1);
+        setIsLoadedFalse();
     }
 
-
-
-    /*
-    public Saab95(boolean turboOn,int nrDoors, double enginePower, double currentSpeed, Color color,
-                  String modelName, int x, int y, int dir) {
-        super(nrDoors,enginePower,currentSpeed,color,modelName, x,y, dir);
-        this.turboOn = turboOn;
-    }
-
-    public Saab95(){
-        setNrDoors(2);
-        setColor(Color.red);
-        setEnginePower(125);
-        turboOn = false;
-        setModelName("Saab95");
-        setX(1);
-        setY(1);
-        stopEngine();
-    }
-
-     */
-
-    public Car getParent() {
+    public LandVehicle getParent() {
         return parent;
     }
+
 
     public void setTurboOn() {
         turboOn = true;
@@ -49,6 +30,32 @@ public class Saab95 implements Transportable {
     public void setTurboOff() {
         turboOn = false;
     }
+
+    public void setIsLoadedTrue() {
+        isLoaded = true;
+    }
+
+    public void setIsLoadedFalse() {
+        isLoaded = false;
+    }
+
+    public boolean getIsLoaded() {
+        return isLoaded;
+    }
+
+    public void move() {
+        parent.move();
+    }
+
+    public void turnLeft() {
+        parent.turnLeft();
+    }
+
+    public void turnRight() {
+        parent.turnRight();
+    }
+
+
 
     /**
      *
@@ -97,12 +104,18 @@ public class Saab95 implements Transportable {
             incrementSpeed(amount);
         }
     }
-}
 
-    /*
-    public static ArrayList createArrayList() {
-        return new ArrayList<Saab95>();
+    public void moveCar() {
+        parent.move();
+    }
+
+    public void  turnRightCar() {
+        parent.turnRight();
+    }
+
+    public void turnLeftCar() {
+        parent.turnLeft();
     }
 
 }
-     */
+

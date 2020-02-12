@@ -1,40 +1,53 @@
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Volvo240 implements Transportable{
 
     private final static double trimFactor = 1.25;
-    private Car parent;
+    private LandVehicle parent;
+    private boolean isLoaded;
 
 
-    public Volvo240(double trimFactor, Car parent) {
+    public Volvo240(double trimFactor, LandVehicle parent, boolean isLoaded) {
         this.parent = parent;
+        this.isLoaded = isLoaded;
 
     }
     public Volvo240() {
-       parent = new Car(2, 100, 0, Color.black, "Volvo240", 1,1,1);
-
+       parent = new LandVehicle(2, 100, 0, Color.black, "Volvo240", 1,1,1);
+       setIsLoadedFalse();
 
    }
 
-    public Car getParent() {
+
+   public void setIsLoadedTrue() {
+        isLoaded = true;
+   }
+
+   public void setIsLoadedFalse() {
+        isLoaded = false;
+   }
+
+   public boolean getIsLoaded() {
+        return isLoaded;
+   }
+
+
+    public LandVehicle getParent() {
         return parent;
     }
-/*
-    public void move() {
-            if (parent.getDir() == 0) {
-                parent.setX((int) parent.getCurrentSpeed());
-            } else if (parent.getDir() == 1) {
-                parent.setY((int) parent.getCurrentSpeed());
-            } else if (parent.getDir() == 2) {
-                parent.setX((int) parent.getCurrentSpeed() * -1);
-            } else if (parent.getDir() == 3) {
-                parent.setY((int) parent.getCurrentSpeed() * -1);
-            }
 
+    public void move() {
+        parent.move();
     }
 
- */
+    public void turnLeft() {
+        parent.turnLeft();
+    }
+
+    public void turnRight() {
+        parent.turnRight();
+    }
+
 
     private double speedFactor(){
         return parent.getEnginePower() * 0.01 * trimFactor;
@@ -81,37 +94,23 @@ public class Volvo240 implements Transportable{
         }
     }
 
+    public void moveCar() {
+        parent.move();
+    }
+
+    public void  turnRightCar() {
+        parent.turnRight();
+    }
+
+    public void turnLeftCar() {
+        parent.turnLeft();
+    }
+
+
 
 
 }
 
-// *********   GARBAGE DAY   *********
 
-  /*
-    public Volvo240(){
-        setNrDoors(2);
-        setColor(Color.black);
-        setEnginePower(100);
-        setModelName("Volvo240");
-        setX(1);
-        setY(1);
-        setDir(1);
-        stopEngine();
-    }
-
-
-
-    public static ArrayList createArrayList() {
-        return new ArrayList<Volvo240>();
-    }
-
-   /*
-    public Volvo240(double trimFactor, int nrDoors, double enginePower, double currentSpeed, Color color,
-                    String modelName, int x, int y, int dir) {
-        super(nrDoors,enginePower,currentSpeed,color,modelName,x,y, dir);
-
-    }
-
-    */
 
 

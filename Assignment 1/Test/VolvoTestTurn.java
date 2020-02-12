@@ -26,14 +26,14 @@ public class VolvoTestTurn {
 
     @Test
     public void testDirection1TurnRightIs0() {
-        test.getParent().turnRight();
+        test.turnRightCar();
         assertTrue(test.getParent().getDir() == 0);
     }
 
     @Test
     public void testDirection2TurnRightIs1() {
         test.getParent().setDir(2);
-        test.getParent().turnRight();
+        test.turnRightCar();
         assertTrue(test.getParent().getDir() == 1);
     }
 
@@ -58,7 +58,7 @@ public class VolvoTestTurn {
     @Test
     public void testDirection0turnLeftIs1() {
         test.getParent().setDir(0);
-        test.getParent().turnLeft();
+        test.turnLeftCar();
         assertTrue(test.getParent().getDir() == 1);
     }
 
