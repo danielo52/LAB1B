@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class CarTransport implements ITransporters, Car  {
+public class CarTransport implements ITransporters {
 
 
     private LandVehicle parent;

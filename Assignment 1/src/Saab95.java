@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Saab95 implements Transportable, Car {
+public class Saab95 implements Transportable, ACar {
 
     private boolean turboOn;
     private LandVehicle parent;
@@ -19,6 +19,14 @@ public class Saab95 implements Transportable, Car {
 
     public LandVehicle getParent() {
         return parent;
+    }
+
+    public int getX() {
+        return parent.getX();
+    }
+
+    public int getY() {
+        return parent.getY();
     }
 
 

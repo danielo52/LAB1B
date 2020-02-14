@@ -114,12 +114,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><code>Car</code>, <code>ITransporters</code></dd>
+<dd><code>ACar</code>, <code>ITransporters</code></dd>
 </dl>
 <hr>
 <pre>public class <span class="typeNameLabel">CarTransport</span>
 extends java.lang.Object
-implements ITransporters, Car</pre>
+implements ITransporters, ACar</pre>
 </li>
 </ul>
 </div>
@@ -522,7 +522,7 @@ implements ITransporters, Car</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>carLoad</code> - takes a car to load. Checks that the car is close, ramp is down, there's room to load
                 and that the CarTransport isn't moving.
-                And we cannot load a Car that is already loaded.</dd>
+                And we cannot load a ACar that is already loaded.</dd>
 </dl>
 </li>
 </ul>
@@ -552,7 +552,7 @@ implements ITransporters, Car</pre>
 <div class="block">moves the CarTransports. And moves every element in transports (i.e. the cars on the ramp) to the same position.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code>move</code>&nbsp;in interface&nbsp;<code>Car</code></dd>
+<dd><code>move</code>&nbsp;in interface&nbsp;<code>ACar</code></dd>
 </dl>
 </li>
 </ul>
@@ -566,7 +566,7 @@ implements ITransporters, Car</pre>
 <div class="block">Enables us to turn the CarTransport AND it's currentLoad to the left</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code>turnLeft</code>&nbsp;in interface&nbsp;<code>Car</code></dd>
+<dd><code>turnLeft</code>&nbsp;in interface&nbsp;<code>ACar</code></dd>
 </dl>
 </li>
 </ul>
@@ -580,7 +580,7 @@ implements ITransporters, Car</pre>
 <div class="block">Enables us to turn the CarTransport AND it's currentLoad to the right</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code>turnRight</code>&nbsp;in interface&nbsp;<code>Car</code></dd>
+<dd><code>turnRight</code>&nbsp;in interface&nbsp;<code>ACar</code></dd>
 </dl>
 </li>
 </ul>
@@ -611,7 +611,7 @@ implements ITransporters, Car</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;brake&#8203;(double&nbsp;amount)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code>brake</code>&nbsp;in interface&nbsp;<code>Car</code></dd>
+<dd><code>brake</code>&nbsp;in interface&nbsp;<code>ACar</code></dd>
 </dl>
 </li>
 </ul>
@@ -624,7 +624,7 @@ implements ITransporters, Car</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;gas&#8203;(double&nbsp;amount)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code>gas</code>&nbsp;in interface&nbsp;<code>Car</code></dd>
+<dd><code>gas</code>&nbsp;in interface&nbsp;<code>ACar</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>amount</code> - an amount between 0 - 1 that scales the gas.</dd>
 </dl>

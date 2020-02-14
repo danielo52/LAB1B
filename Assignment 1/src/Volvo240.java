@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Volvo240 implements Transportable{
+public class Volvo240 implements Transportable, ACar {
 
     private final static double trimFactor = 1.25;
     private LandVehicle parent;
@@ -35,6 +35,15 @@ public class Volvo240 implements Transportable{
     public LandVehicle getParent() {
         return parent;
     }
+
+    public int getX() {
+        return parent.getX();
+    }
+
+    public int getY() {
+        return parent.getY();
+    }
+
 
     public void move() {
         parent.move();

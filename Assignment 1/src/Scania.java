@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Scania implements ITruck, Car {
+public class Scania implements ITruck, ACar {
 
     private LandVehicle parent;
     private int nrGears;
@@ -29,6 +29,14 @@ public class Scania implements ITruck, Car {
      */
     public LandVehicle getParent() {
         return parent;
+    }
+
+    public int getX() {
+        return parent.getX();
+    }
+
+    public int getY() {
+        return parent.getY();
     }
 
 

@@ -3,7 +3,7 @@
  * i.e. a user should be able to call move() on a Car, and it should work fine.
  * (Saab, Volvo, Scania & CarTransport all implement Car.
  */
-public interface Car {
+public interface ACar {
 
     void move();
 
@@ -14,5 +14,9 @@ public interface Car {
     void gas(double amount);
 
     void brake(double amount);
+
+    int getX();
+
+    int getY();
 
 }
