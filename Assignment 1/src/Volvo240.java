@@ -13,7 +13,7 @@ public class Volvo240 implements Transportable, ACar {
 
     }
     public Volvo240() {
-       parent = new LandVehicle(2, 100, 0, Color.black, "Volvo240", 1,1,1);
+       parent = new LandVehicle(2, 100, 0, Color.black, "Volvo240", 1,1,0);
        setIsLoadedFalse();
 
    }

@@ -31,6 +31,15 @@ public class CarController {
 
         cc.cars.add(new Volvo240());
         cc.cars.add(new Saab95());
+        cc.cars.add(new Scania());
+
+/*
+        Saab95 saabTest = new Saab95();   //SOLO
+        saabTest.getParent().setX(100);   //SOLO
+        cc.cars.add(saabTest);            //SOLO
+
+ */
+
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -61,6 +70,13 @@ public class CarController {
         for (ACar car : cars
                 ) {
             car.gas(gas);
+        }
+    }
+    //brakeAmount casting since I believe the dropdown list in the client gives us an Int (0-100) and we need a double
+    void brake(int amount) {
+        double brakeAmount = ((double) amount)/100;
+        for(ACar car : cars) {
+            car.brake(brakeAmount);
         }
     }
 }

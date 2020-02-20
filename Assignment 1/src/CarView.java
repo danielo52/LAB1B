@@ -29,6 +29,11 @@ public class CarView extends JFrame{
     int gasAmount = 0;
     JLabel gasLabel = new JLabel("Amount of gas");
 
+    JPanel brakePanel = new JPanel();
+    JSpinner brakeSpinner = new JSpinner();
+    int brakeAmount = 0;
+    JLabel brakeLabel = new JLabel("Amount braking");
+
     JButton gasButton = new JButton("Gas");
     JButton brakeButton = new JButton("Brake");
     JButton turboOnButton = new JButton("Saab Turbo on");
@@ -63,17 +68,34 @@ public class CarView extends JFrame{
                         100, //max
                         1);//step
         gasSpinner = new JSpinner(spinnerModel);
+        brakeSpinner = new JSpinner(spinnerModel); //SOLO
         gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 gasAmount = (int) ((JSpinner)e.getSource()).getValue();
             }
         });
+        brakeSpinner.addChangeListener(new ChangeListener() { //SOLO
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                brakeAmount = (int) ((JSpinner)e.getSource()).getValue();
+            }
+        });
+
 
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
         gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
 
         this.add(gasPanel);
+/*
+        Not necessary, uses the same panel as gas.
+        brakePanel.setLayout(new BorderLayout());
+        brakePanel.add(brakeLabel, BorderLayout.PAGE_START);
+        brakePanel.add(brakeSpinner, BorderLayout.PAGE_END);
+
+        this.add(brakePanel);
+
+ */
 
         controlPanel.setLayout(new GridLayout(2,4));
 
@@ -107,7 +129,7 @@ public class CarView extends JFrame{
                 carC.gas(gasAmount);
             }
         });
-       /*
+
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -115,7 +137,7 @@ public class CarView extends JFrame{
             }
         });
 
-        */
+
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();

@@ -13,7 +13,7 @@ public class Saab95 implements Transportable, ACar {
 
     // int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, int x, int y, int dir
     public Saab95() {
-        parent = new LandVehicle(2, 125, 0, Color.red, "Saab95", 1, 1, 1);
+        parent = new LandVehicle(2, 125, 0, Color.red, "Saab95", 1, 1, 0);
         setIsLoadedFalse();
     }
 

@@ -18,7 +18,7 @@ public class Scania implements ITruck, ACar {
     }
 
     public Scania() {
-        parent = new LandVehicle(2, 150, 0, Color.black, "Scania 79", 1, 1 ,1);
+        parent = new LandVehicle(2, 150, 0, Color.black, "Scania 79", 1, 1 ,0);
         setNrGears(12);
         setBedAngle(0);
     }
