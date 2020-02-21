@@ -10,7 +10,7 @@ import javax.swing.*;
 
 public class DrawPanel extends JPanel{
 
-    // Just a single image, TODO: Generalize
+    // Just a single image, TODO: Generalize KLART!
     BufferedImage volvoImage;
     BufferedImage saabImage; //solo added
     BufferedImage scaniaImage; //solo added
@@ -20,7 +20,7 @@ public class DrawPanel extends JPanel{
     Point saabPoint = new Point(); //solo added
     Point scaniaPoint = new Point(); //
 
-    // TODO: Make this genereal for all cars
+    // TODO: Make this genereal for all cars KLART!
     void moveit(int x, int y){
         volvoPoint.x = x;
         volvoPoint.y = y;
@@ -28,7 +28,10 @@ public class DrawPanel extends JPanel{
         saabPoint.y = y+100;
         scaniaPoint.x = x;
         scaniaPoint.y = y+200;
+
+
     }
+
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
@@ -46,6 +49,8 @@ public class DrawPanel extends JPanel{
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
             saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
             scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
+
+
         } catch (IOException ex)
         {
             ex.printStackTrace();
@@ -54,14 +59,15 @@ public class DrawPanel extends JPanel{
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
-    // TODO: Change to suit your needs.
+    // TODO: Change to suit your needs. KLART! (I BELIEVE)
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        //super.paintComponent(s);
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
         g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
         g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
+
+
 
     }
 }

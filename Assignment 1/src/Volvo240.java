@@ -31,6 +31,18 @@ public class Volvo240 implements Transportable, ACar {
         return isLoaded;
    }
 
+    public void setTurboOn() {
+        throw new UnsupportedOperationException("Volvo does not support Turbo");
+    }
+
+    public void setTurboOff() {
+        throw new UnsupportedOperationException("Volvo does not support Turbo");
+    }
+
+    public void setCurrentSpeed(int speed) {
+        parent.setCurrentSpeed(speed);
+    }
+
 
     public LandVehicle getParent() {
         return parent;
@@ -42,6 +54,20 @@ public class Volvo240 implements Transportable, ACar {
 
     public int getY() {
         return parent.getY();
+    }
+
+    public void setX(int x) {
+        parent.setX(x);
+    }
+
+    public void setY(int y) {
+        parent.setY(y);
+    }
+
+    public int getDir() {return parent.getDir();}
+
+    public void setDir(int dir) {
+        parent.setDir(dir);
     }
 
 

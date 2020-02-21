@@ -19,4 +19,22 @@ public interface ACar {
 
     int getY();
 
+    void setTurboOn();
+
+    void setTurboOff();
+
+    /*
+    ADD METHODS FOR LOWERING AND RAISING THE BED THEN ADD THEM IN THE CARS
+     */
+
+    int getDir();
+
+    void setDir(int dir);
+
+    void setX(int x);
+
+    void setY(int y);
+
+    void setCurrentSpeed(int speed);
+
 }

@@ -29,11 +29,31 @@ public class Saab95 implements Transportable, ACar {
         return parent.getY();
     }
 
+    public void setX(int x) {
+        parent.setX(x);
+    }
+
+    public void setY(int y) {
+        parent.setY(y);
+    }
+
+    public int getDir() {return parent.getDir();}
+
+    public void setCurrentSpeed(int speed) {
+        parent.setCurrentSpeed(speed);
+    }
+
+    public void setDir(int dir) {
+        parent.setDir(dir);
+    }
+
+    public boolean getTurboState() {
+        return turboOn;
+    }
 
     public void setTurboOn() {
         turboOn = true;
     }
-
 
     public void setTurboOff() {
         turboOn = false;

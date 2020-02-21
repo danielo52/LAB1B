@@ -39,6 +39,32 @@ public class Scania implements ITruck, ACar {
         return parent.getY();
     }
 
+    public void setX(int x) {
+        parent.setX(x);
+    }
+
+    public void setY(int y) {
+        parent.setY(y);
+    }
+
+    public int getDir() {return parent.getDir();}
+
+    public void setDir(int dir) {
+        parent.setDir(dir);
+    }
+
+    public void setCurrentSpeed(int speed) {
+        parent.setCurrentSpeed(speed);
+    }
+
+    public void setTurboOn() {
+        throw new UnsupportedOperationException("Scania does not support Turbo");
+    }
+
+    public void setTurboOff() {
+        throw new UnsupportedOperationException("Scania does not support Turbo");
+    }
+
 
     /**
      *
