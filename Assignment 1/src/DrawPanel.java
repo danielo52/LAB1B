@@ -21,6 +21,14 @@ public class DrawPanel extends JPanel{
     Point scaniaPoint = new Point();
 
     // TODO: Make this genereal for all cars
+
+    /**
+     * moveVolvo, moveSaab and moveScania move their respective Car.
+     * Uses 3 different methods because the cars should not all move in unison. These are implemented in
+     * TimeListener.
+     * @param x Coordinate
+     * @param y Coordinate
+     */
     void moveVolvo(int x, int y) {
         volvoPoint.x = x;
         volvoPoint.y = y;

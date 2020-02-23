@@ -49,6 +49,12 @@ public class CarController {
     * view to update its images. Change this method to your needs.
     * */
 
+    /**
+     * isCollisionHigh & isCollisionLow checks whether the car has collided with the wall or not
+     * moveCollision first stops the car, and then moves it away from the collision (i.e. the wall)
+     * moveVolvo, moveSaab and moveScania are all methods from DrawPanel (changed from moveit() )
+     *
+     */
     // Some hacky moving, although not that hacky imo, works.
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
