@@ -7,6 +7,7 @@ public class Saab95 implements Transportable, ACar {
     private boolean isLoaded;
 
     public Saab95(boolean turboOn, LandVehicle parent, boolean isLoaded) {
+        this.turboOn = turboOn;
         this.parent = parent;
         this.isLoaded = isLoaded;
     }
@@ -15,6 +16,7 @@ public class Saab95 implements Transportable, ACar {
     public Saab95() {
         parent = new LandVehicle(2, 125, 0, Color.red, "Saab95", 1, 1, 0);
         setIsLoadedFalse();
+        turboOn = false;
     }
 
     public LandVehicle getParent() {
@@ -57,6 +59,14 @@ public class Saab95 implements Transportable, ACar {
 
     public void setTurboOff() {
         turboOn = false;
+    }
+
+    public void lowerBed() {
+        throw new UnsupportedOperationException("Saab does not have a bed");
+    }
+
+    public void raiseBed() {
+        throw new UnsupportedOperationException("Saab does not have a bed");
     }
 
     public void setIsLoadedTrue() {
@@ -104,9 +114,17 @@ public class Saab95 implements Transportable, ACar {
 
     private double speedFactor() {
         double turbo = 1;
-        if (turboOn) turbo = 1.3;
+        if (turboOn){
+            turbo = 1.3;
+        }
         return parent.getEnginePower() * 0.01 * turbo;
     }
+
+    public double getSpeedFactor() {
+        return speedFactor();
+    }
+
+
 
     /**
      *
@@ -134,6 +152,7 @@ public class Saab95 implements Transportable, ACar {
     }
 
     public void moveCar() {
+        parent.setCurrentSpeed(parent.getCurrentSpeed()*getSpeedFactor());
         parent.move();
     }
 

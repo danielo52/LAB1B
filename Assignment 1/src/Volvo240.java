@@ -39,6 +39,14 @@ public class Volvo240 implements Transportable, ACar {
         throw new UnsupportedOperationException("Volvo does not support Turbo");
     }
 
+    public void lowerBed() {
+        throw new UnsupportedOperationException("Volvo does not have a bed");
+    }
+
+    public void raiseBed() {
+        throw new UnsupportedOperationException("Volvo does not have a bed");
+    }
+
     public void setCurrentSpeed(int speed) {
         parent.setCurrentSpeed(speed);
     }
@@ -88,6 +96,15 @@ public class Volvo240 implements Transportable, ACar {
         return parent.getEnginePower() * 0.01 * trimFactor;
     }
 
+    public double getSpeedFactor() {
+        return speedFactor();
+    }
+
+    public void moveCar() {
+        parent.setCurrentSpeed(parent.getCurrentSpeed()*getSpeedFactor());
+        parent.move();
+    }
+
     /**
      *
      * @param amount an amount to scale the speedFactor. Method currently public due to testing.
@@ -129,9 +146,6 @@ public class Volvo240 implements Transportable, ACar {
         }
     }
 
-    public void moveCar() {
-        parent.move();
-    }
 
     public void  turnRightCar() {
         parent.turnRight();

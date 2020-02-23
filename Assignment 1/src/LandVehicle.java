@@ -141,7 +141,7 @@ public class LandVehicle implements Movable {
         }else if(dir == 1) {
              setY((int) getCurrentSpeed());
         } else if(dir == 2) {
-            setX(x += (int) getCurrentSpeed() * -1);
+            setX(x -= (int) getCurrentSpeed());
         } else if (dir == 3) {
             setY((int) getCurrentSpeed() * -1);
         }

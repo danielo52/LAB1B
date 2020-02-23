@@ -74,6 +74,15 @@ public class Scania implements ITruck, ACar {
         return parent.getEnginePower() * 0.001 * nrGears;
     }
 
+    public double getSpeedFactor() {
+        return speedFactor();
+    }
+
+    public void moveCar() {
+        parent.setCurrentSpeed(parent.getCurrentSpeed()*getSpeedFactor());
+        parent.move();
+    }
+
     public void incrementSpeed(double amount) {
         if(isBedDown()) {
             parent.setCurrentSpeed(Math.min(parent.getCurrentSpeed() + speedFactor() * amount, parent.getEnginePower()));
@@ -177,6 +186,9 @@ public class Scania implements ITruck, ACar {
     public void lowerBed() {
         if(isIdle()) {
             decrementAngle(10);
+            if(bedAngle < 0) {
+                bedAngle = 0;
+            }
         }
     }
 

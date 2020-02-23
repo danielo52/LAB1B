@@ -23,9 +23,9 @@ public interface ACar {
 
     void setTurboOff();
 
-    /*
-    ADD METHODS FOR LOWERING AND RAISING THE BED THEN ADD THEM IN THE CARS
-     */
+    void lowerBed();
+
+    void raiseBed();
 
     int getDir();
 
@@ -36,5 +36,9 @@ public interface ACar {
     void setY(int y);
 
     void setCurrentSpeed(int speed);
+
+    double getSpeedFactor();
+
+    void moveCar();
 
 }
