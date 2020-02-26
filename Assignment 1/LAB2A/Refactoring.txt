@@ -1,0 +1,61 @@
+Snabb kommentar på Uppgift 2 (UML-diagrammet).
+Som vi diskuterade på redovisningen så hade vi inte med några metoder/fields i klasserna p.g.a. att det kändes
+överflödigt när vi skrev diagrammet.
+
+    - Bilderna på UML-diagrammen blir tyvärr roterade när man lägger in dem i IntelliJ av någon anledning.
+            Öppnar man dem i Finder/Utforskaren så är det inga problem dock.
+
+
+Uppgift 4
+
+Refaktorisering:
+
+Detta är en grov generalisering av de refaktoriserings-steg vi förväntar oss att göra
+
+
+    -	Skapa en class Application.
+        o	Här kommer vi ha vår main method som startar själva applikationen
+
+    -	Bryter ut en klass UpdateWorld ur Applikation som sköter uppdaterandet av själva systemet. Denna klass
+        kommer således ha starkt dependency till TimeListener. (Kan eventuellt komma att lägga en abstraktion
+        emellan dessa två klasser).
+        (Denna punkt är tillagd efter samverkan med TA, därav inte med i vårt UML-diagram).
+
+    -	Skapa abstraktioner av Controller och View:
+        o	Interface: ICarController
+        o	Interface: ICarView
+        o	Interface: IDrawPanel
+
+
+    -	Introducera ett Observer pattern, förslagsvis bör DrawPanel och UpdateWorld vara subscriber
+        till uppdateringarna. Exakt hur detta kommer implementeras är i dagsläget lite oklart, men vi vet att vi
+        kommer implementera ett Observer pattern i alla fall.
+
+    -	I och med detta Observer pattern bryter vi ut TimeListener så denna blir en public class
+            o	Vi kommer således introducera interfaces: IObservable och IObserver
+
+    -	Tanken är alltså att vi har tar in abstraktioner (och inte konkreta implementationer) av våra V- och C-klasser
+        i så bred utsträckning det bara går
+
+    -   Bryta ut och skapa en klass ControlPanel (implements IControlPanel). CarView kommer ta in en IControlPanel.
+        Dels skapar detta abstraktion, och dels ger det oss mer utrymme för extension.
+
+    -   CarView kommer också ta in en IDrawPanel istället. Detta skapar precis som ovan nämnda punkt om ControlPanel,
+        utrymme för extension samtidigt som det ger oss en högre grad av abstraktion.
+
+    -   Metoden initComponents(String title) i CarView är i stort behov av refaktorisering (funktionell nedbrytning).
+        Då vi bryter ut stora delar av klassen (i.e. ControlPanel) kommer denna metod ändras, och då också sannolikt
+        att brytas ner i fler, mindre, delmetoder.
+
+    -   Slutligen kommer mer stor sannolikhet ytterligare, lite mindre, ändringar göras för att kunna genomföra
+        ovan nämnda refaktoriseringar.
+
+
+
+    Om vi följer dessa refaktoriseringssteg kommer vi förhoppningsvis få ett system som inte innehåller Rigid, Fragile
+    eller non-reusable kod. Vi bör dessutom få en Thing Controller, dumb views & smart model.
+
+
+
+
+
