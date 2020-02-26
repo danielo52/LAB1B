@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Scania implements ITruck, ACar {
+public class Scania implements ACar {
 
     private LandVehicle parent;
     private int nrGears;

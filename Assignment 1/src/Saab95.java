@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Saab95 implements Transportable, ACar {
+public class Saab95 implements Transportable, ACar{
 
     private boolean turboOn;
     private LandVehicle parent;

@@ -4,6 +4,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -14,7 +15,7 @@ import java.awt.event.ActionListener;
  **/
 
 public class CarView extends JFrame{
-    private static final int X = 800;
+    private static final int X = 800; //800 på båda
     private static final int Y = 800;
 
 
@@ -57,6 +58,8 @@ public class CarView extends JFrame{
         this.carC = cc;
         initComponents(framename);
     }
+
+
 
     // Sets everything in place and fits everything
     // TODO: Take a good look and make sure you understand how these methods and components work
@@ -176,7 +179,7 @@ public class CarView extends JFrame{
                 carC.startCars();
             }
         });
-/*
+
         liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -193,7 +196,7 @@ public class CarView extends JFrame{
             }
         });
 
- */
+
 
 
 

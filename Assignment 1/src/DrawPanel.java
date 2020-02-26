@@ -46,9 +46,9 @@ public class DrawPanel extends JPanel{
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
-        this.setDoubleBuffered(true);
-        this.setPreferredSize(new Dimension(x, y));
-        this.setBackground(Color.green);
+        this.setDoubleBuffered(true); //drawing done in buffer, then copied to screen
+        this.setPreferredSize(new Dimension(x, y)); //sets the size
+        this.setBackground(Color.green); //color of backgrund...
         // Print an error message in case file is not found with a try/catch block
         try {
             // You can remove the "pics" part if running outside of IntelliJ and

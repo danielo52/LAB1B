@@ -3,14 +3,16 @@
  * i.e. a user should be able to call move() on a Car, and it should work fine.
  * (Saab, Volvo, Scania & CarTransport all implement Car.
  */
-public interface ACar {
+public interface ACar extends Movable {
 
     void move();
 
-    void turnRight();
+    /*void turnRight();
 
     void turnLeft();
 
+
+     */
     void gas(double amount);
 
     void brake(double amount);

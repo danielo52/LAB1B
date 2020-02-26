@@ -11,4 +11,6 @@ public interface ITruck  {
     boolean isBedDown();
 
 
+
+
 }
