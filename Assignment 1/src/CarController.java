@@ -1,7 +1,10 @@
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 
 
 /*
@@ -13,36 +16,178 @@ import java.util.ArrayList;
 public class CarController {
     // member fields:
 
+
+    CarView carView;
+    CarControlPanel ccPanel;
+    CarModel carModel;
+
+    TimerListener timeList;
+
     // The delay (ms) corresponds to 20 updates a sec (hz)
     private final int delay = 50;
     // The timer is started with an listener (see below) that executes the statements
     // each step between delays.
-    private Timer timer = new Timer(delay, new TimerListener());
+    //private Timer timer = new Timer(delay, new TimerListener());
+    private Timer timer;
+    //AddRemoveCarPanel arcPanel
+    public CarController(CarView theView, CarModel theModel, CarControlPanel cacPanel) {
+        this.carView = theView;
+        this.carModel = theModel;
+        this.ccPanel = cacPanel;
+        carView.add(ccPanel);
+        setAllListeners(cacPanel);
 
+    }
 
-    // The frame that represents this instance View of the MVC pattern
-    CarView frame;
-    // A list of cars, modify if needed
-    ArrayList<ACar> cars = new ArrayList<>();
+    private void setAllListeners(CarControlPanel cacPanel) {
+        cacPanel.addGasListener(new GasListener());
+        cacPanel.addGasSpinnerChanger(new GasChangeListener());
+        cacPanel.addBrakeListener(new BrakeListener());
+        cacPanel.addTurboOnListener(new TurboOnListener());
+        cacPanel.addTurboOffListener(new TurboOffListener());
+        cacPanel.addStartCarsListener(new StartCarsListener());
+        cacPanel.addStopCarsListener(new StopCarsListener());
+        cacPanel.addLiftBedListener(new LiftBedListener());
+        cacPanel.addLowerBedListener(new LowerBedListener());
+
+    }
+
+     private class GasListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carModel.gas(ccPanel.getGasAmount());
+        }
+    }
+
+    private class BrakeListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carModel.brake(ccPanel.getBrakeAmount());
+        }
+    }
+
+    private class TurboOnListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carModel.setTurboOn();
+        }
+    }
+
+    class TurboOffListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carModel.setTurboOff();
+        }
+    }
+    class StartCarsListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carModel.startCars();
+        }
+    }
+    class StopCarsListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carModel.stopCars();
+        }
+    }
+    class LiftBedListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carModel.raiseBed();
+        }
+    }
+    class LowerBedListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carModel.lowerBed();
+        }
+    }
+
+    class GasChangeListener implements ChangeListener {
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            ccPanel.setGasAmount( (int) ((JSpinner)e.getSource()).getValue());
+        }
+    }
+
+    class AddCarListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carModel.addAdditionalCar();
+
+        }
+    }
+
+    class RemoveCarListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carModel.removeACar();
+        }
+    }
+
+    public Timer getTimer() {
+        return timer;
+    }
+
+    public void setTimer(Timer timer) {
+        this.timer = timer;
+    }
+
+    public int getDelay() {
+        return delay;
+    }
+
 
     //methods:
     public static void main(String[] args) {
-        // Instance of this class
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // PURE GARBAGE. OUT-COMMENTED JUST IN CASE (GARBAGE DAY)
+
+
+    /* // Instance of this class
+        TimerListener timeList = new TimerListener();
+
 
         CarController cc = new CarController();
+        cc.timer = new Timer(CarController.delay, )
+        ControlPanel cPanel = new ControlPanel(timeList);
+
 
         cc.cars.add(new Volvo240());
         cc.cars.add(new Saab95());
         cc.cars.add(new Scania());
 
         // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc);
+        cc.frame = new CarView("CarSim 1.0", cPanel);
 
         // Start the timer
         cc.timer.start();
-    }
 
+        */
 
+/*
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (ACar car : cars) {
@@ -78,7 +223,7 @@ public class CarController {
         }
 
         private boolean isCollisionHigh(ACar car) {
-            return (Math.round(car.getX()) > frame.getXCarView() - 100);
+            return (Math.round(car.getX()) > CarView.getXCarView() - 100);
         }
 
         private void moveCollision(ACar car, int mover) {
@@ -179,9 +324,12 @@ public class CarController {
             car.setCurrentSpeed(1);
         }
 
-        /**
-         * BOTH stopCars and startCars could/should be simplified an call stopCar & startCar
-         */
+ */
+
+    /**
+     * BOTH stopCars and startCars could/should be simplified an call stopCar & startCar
+     */
+        /*
         void stopCars() {
             for (ACar car : cars) {
                 car.setCurrentSpeed(0);
@@ -195,13 +343,16 @@ public class CarController {
         }
 
 
+         */
+
+
 
 
 
     /*
-                ***** GARBAGE DAY *****
+     ***** GARBAGE DAY *****
 
-                * /* Each step the TimerListener moves all the cars in the list and tells the
+     * /* Each step the TimerListener moves all the cars in the list and tells the
      * view to update its images. Change this method to your needs.
      * */
 
@@ -364,9 +515,5 @@ public class CarController {
     AND! -100 since the pic is 100 pixels long so this could be solved in a prettier way as well.
     All in all the visuals work like a charm though.
      */
-
-
-
-
 }
 

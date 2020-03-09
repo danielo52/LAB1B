@@ -157,6 +157,10 @@ public class Scania implements ACar {
         return (parent.getCurrentSpeed() == 0);
     }
 
+    public double getCurrentSpeed() {
+        return getParent().getCurrentSpeed();
+    }
+
 
 
 /*

@@ -1,6 +1,4 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Deque;
 
 public class Shop<T extends Transportable> {
 

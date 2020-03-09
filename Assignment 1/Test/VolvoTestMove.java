@@ -1,8 +1,6 @@
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
+
 import static junit.framework.TestCase.assertTrue;
 
 public class VolvoTestMove {

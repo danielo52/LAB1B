@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Saab95 implements Transportable, ACar{
+public class Saab95 implements Transportable, ACar {
 
     private boolean turboOn;
     private LandVehicle parent;
@@ -109,6 +109,10 @@ public class Saab95 implements Transportable, ACar{
      */
     public void incrementSpeed(double amount) {
         parent.setCurrentSpeed(parent.getCurrentSpeed() + speedFactor() * amount);
+    }
+
+    public double getCurrentSpeed() {
+        return getParent().getCurrentSpeed();
     }
 
 

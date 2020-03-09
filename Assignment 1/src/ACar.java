@@ -43,4 +43,6 @@ public interface ACar extends Movable {
 
     void moveCar();
 
+    double getCurrentSpeed();
+
 }

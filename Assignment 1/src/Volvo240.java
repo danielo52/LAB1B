@@ -100,6 +100,10 @@ public class Volvo240 implements Transportable, ACar {
         return speedFactor();
     }
 
+    public double getCurrentSpeed() {
+        return getParent().getCurrentSpeed();
+    }
+
     public void moveCar() {
         parent.setCurrentSpeed(parent.getCurrentSpeed()*getSpeedFactor());
         parent.move();

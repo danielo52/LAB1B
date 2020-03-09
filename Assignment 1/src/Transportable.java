@@ -1,7 +1,3 @@
-/*
-Interface for Cars that are transportable.
- */
-
 public interface Transportable {
 
 
